@@ -24,6 +24,12 @@ def cut_image(
         x_shift: int,
         y_shift: int
 ):
+    if x_width < x_shift:
+        raise f"x_shift must be less than x_width"
+
+    if y_height < y_shift:
+        raise f"y_shift must be less than y_height"
+
     image_height, image_width = image.shape[:2]
 
     x_pairs = get_start_finish_coords(image_width, x_width, x_shift)
@@ -36,8 +42,5 @@ def cut_image(
             y_s, y_f = y
 
             tiles.append(image[y_s:y_f, x_s:x_f])
-            print(tiles[-1].shape)
-            plt.imshow(tiles[-1])
-            plt.show()
 
     return tiles
