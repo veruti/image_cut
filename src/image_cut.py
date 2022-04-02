@@ -39,3 +39,5 @@ def cut_image(
             print(tiles[-1].shape)
             plt.imshow(tiles[-1])
             plt.show()
+
+    return tiles
